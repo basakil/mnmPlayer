@@ -73,6 +73,7 @@
 		7A66467D1D37520800E5E57A /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		7A66467E1D37520800E5E57A /* Utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Utils.c; sourceTree = "<group>"; };
 		7A66467F1D37520800E5E57A /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		7A78C6A21D3756AF00DD8155 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +108,7 @@
 				7A6646351D374E3300E5E57A /* mnmPlayerTests */,
 				7A6646401D374E3300E5E57A /* mnmPlayerUITests */,
 				7A6646241D374E3200E5E57A /* Products */,
+				7A78C6A21D3756AF00DD8155 /* README.md */,
 				7A66467C1D37520800E5E57A /* TODO.txt */,
 			);
 			sourceTree = "<group>";
@@ -525,6 +527,7 @@
 				7A6646481D374E3300E5E57A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A6646491D374E3300E5E57A /* Build configuration list for PBXNativeTarget "mnmPlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +536,7 @@
 				7A66464B1D374E3300E5E57A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A66464C1D374E3300E5E57A /* Build configuration list for PBXNativeTarget "mnmPlayerUITests" */ = {
 			isa = XCConfigurationList;
@@ -541,6 +545,7 @@
 				7A66464E1D374E3300E5E57A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
