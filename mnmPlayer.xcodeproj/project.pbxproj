@@ -9,9 +9,22 @@
 /* Begin PBXBuildFile section */
 		7A6646271D374E3200E5E57A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646261D374E3200E5E57A /* AppDelegate.swift */; };
 		7A6646291D374E3200E5E57A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A6646281D374E3200E5E57A /* Assets.xcassets */; };
-		7A66462C1D374E3300E5E57A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A66462A1D374E3300E5E57A /* MainMenu.xib */; };
 		7A6646371D374E3300E5E57A /* mnmPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646361D374E3300E5E57A /* mnmPlayerTests.swift */; };
 		7A6646421D374E3300E5E57A /* mnmPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646411D374E3300E5E57A /* mnmPlayerUITests.swift */; };
+		7A6646601D374F2000E5E57A /* PlayList+IO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646501D374F2000E5E57A /* PlayList+IO.swift */; };
+		7A6646611D374F2000E5E57A /* PlayListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646511D374F2000E5E57A /* PlayListUI.swift */; };
+		7A6646621D374F2000E5E57A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646521D374F2000E5E57A /* Constants.swift */; };
+		7A6646631D374F2000E5E57A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646531D374F2000E5E57A /* Utils.swift */; };
+		7A6646641D374F2000E5E57A /* PlayerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646541D374F2000E5E57A /* PlayerUI.swift */; };
+		7A6646651D374F2000E5E57A /* WindowedUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646551D374F2000E5E57A /* WindowedUI.swift */; };
+		7A6646661D374F2000E5E57A /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646561D374F2000E5E57A /* StreamReader.swift */; };
+		7A6646671D374F2000E5E57A /* PlayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646571D374F2000E5E57A /* PlayList.swift */; };
+		7A6646681D374F2000E5E57A /* PlayList+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646581D374F2000E5E57A /* PlayList+DataSource.swift */; };
+		7A6646691D374F2000E5E57A /* PLItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646591D374F2000E5E57A /* PLItem.swift */; };
+		7A66466A1D374F2000E5E57A /* ICCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66465A1D374F2000E5E57A /* ICCP.swift */; };
+		7A66466B1D374F2000E5E57A /* AVFPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66465B1D374F2000E5E57A /* AVFPlayer.swift */; };
+		7A66466D1D374F2000E5E57A /* Utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 7A66465E1D374F2000E5E57A /* Utils.c */; };
+		7A66466E1D374F2000E5E57A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66465F1D374F2000E5E57A /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +48,6 @@
 		7A6646231D374E3200E5E57A /* mnmPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mnmPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A6646261D374E3200E5E57A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A6646281D374E3200E5E57A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7A66462B1D374E3300E5E57A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		7A66462D1D374E3300E5E57A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A6646321D374E3300E5E57A /* mnmPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mnmPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A6646361D374E3300E5E57A /* mnmPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mnmPlayerTests.swift; sourceTree = "<group>"; };
@@ -43,6 +55,23 @@
 		7A66463D1D374E3300E5E57A /* mnmPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mnmPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A6646411D374E3300E5E57A /* mnmPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mnmPlayerUITests.swift; sourceTree = "<group>"; };
 		7A6646431D374E3300E5E57A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A66464F1D374F2000E5E57A /* mnmPlayer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mnmPlayer-Bridging-Header.h"; sourceTree = "<group>"; };
+		7A6646501D374F2000E5E57A /* PlayList+IO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PlayList+IO.swift"; path = "../../../temp/mnmPlayer/mnmPlayer/PlayList+IO.swift"; sourceTree = "<group>"; };
+		7A6646511D374F2000E5E57A /* PlayListUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayListUI.swift; path = ../../../temp/mnmPlayer/mnmPlayer/PlayListUI.swift; sourceTree = "<group>"; };
+		7A6646521D374F2000E5E57A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../temp/mnmPlayer/mnmPlayer/Constants.swift; sourceTree = "<group>"; };
+		7A6646531D374F2000E5E57A /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../../temp/mnmPlayer/mnmPlayer/Utils.swift; sourceTree = "<group>"; };
+		7A6646541D374F2000E5E57A /* PlayerUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerUI.swift; path = ../../../temp/mnmPlayer/mnmPlayer/PlayerUI.swift; sourceTree = "<group>"; };
+		7A6646551D374F2000E5E57A /* WindowedUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindowedUI.swift; path = ../../../temp/mnmPlayer/mnmPlayer/WindowedUI.swift; sourceTree = "<group>"; };
+		7A6646561D374F2000E5E57A /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamReader.swift; path = ../../../temp/mnmPlayer/mnmPlayer/StreamReader.swift; sourceTree = "<group>"; };
+		7A6646571D374F2000E5E57A /* PlayList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayList.swift; path = ../../../temp/mnmPlayer/mnmPlayer/PlayList.swift; sourceTree = "<group>"; };
+		7A6646581D374F2000E5E57A /* PlayList+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PlayList+DataSource.swift"; path = "../../../temp/mnmPlayer/mnmPlayer/PlayList+DataSource.swift"; sourceTree = "<group>"; };
+		7A6646591D374F2000E5E57A /* PLItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PLItem.swift; path = ../../../temp/mnmPlayer/mnmPlayer/PLItem.swift; sourceTree = "<group>"; };
+		7A66465A1D374F2000E5E57A /* ICCP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ICCP.swift; path = ../../../temp/mnmPlayer/mnmPlayer/ICCP.swift; sourceTree = "<group>"; };
+		7A66465B1D374F2000E5E57A /* AVFPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVFPlayer.swift; path = ../../../temp/mnmPlayer/mnmPlayer/AVFPlayer.swift; sourceTree = "<group>"; };
+		7A66465C1D374F2000E5E57A /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TODO.txt; path = ../../temp/mnmPlayer/mnmPlayer/TODO.txt; sourceTree = "<group>"; };
+		7A66465D1D374F2000E5E57A /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = ../../../temp/mnmPlayer/mnmPlayer/Utils.h; sourceTree = "<group>"; };
+		7A66465E1D374F2000E5E57A /* Utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Utils.c; path = ../../../temp/mnmPlayer/mnmPlayer/Utils.c; sourceTree = "<group>"; };
+		7A66465F1D374F2000E5E57A /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = ../../../temp/mnmPlayer/mnmPlayer/main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +106,7 @@
 				7A6646351D374E3300E5E57A /* mnmPlayerTests */,
 				7A6646401D374E3300E5E57A /* mnmPlayerUITests */,
 				7A6646241D374E3200E5E57A /* Products */,
+				7A66465C1D374F2000E5E57A /* TODO.txt */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,10 +123,25 @@
 		7A6646251D374E3200E5E57A /* mnmPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				7A6646501D374F2000E5E57A /* PlayList+IO.swift */,
+				7A6646511D374F2000E5E57A /* PlayListUI.swift */,
+				7A6646521D374F2000E5E57A /* Constants.swift */,
+				7A6646531D374F2000E5E57A /* Utils.swift */,
+				7A6646541D374F2000E5E57A /* PlayerUI.swift */,
+				7A6646551D374F2000E5E57A /* WindowedUI.swift */,
+				7A6646561D374F2000E5E57A /* StreamReader.swift */,
+				7A6646571D374F2000E5E57A /* PlayList.swift */,
+				7A6646581D374F2000E5E57A /* PlayList+DataSource.swift */,
+				7A6646591D374F2000E5E57A /* PLItem.swift */,
+				7A66465A1D374F2000E5E57A /* ICCP.swift */,
+				7A66465B1D374F2000E5E57A /* AVFPlayer.swift */,
+				7A66465D1D374F2000E5E57A /* Utils.h */,
+				7A66465E1D374F2000E5E57A /* Utils.c */,
+				7A66465F1D374F2000E5E57A /* main.swift */,
 				7A6646261D374E3200E5E57A /* AppDelegate.swift */,
 				7A6646281D374E3200E5E57A /* Assets.xcassets */,
-				7A66462A1D374E3300E5E57A /* MainMenu.xib */,
 				7A66462D1D374E3300E5E57A /* Info.plist */,
+				7A66464F1D374F2000E5E57A /* mnmPlayer-Bridging-Header.h */,
 			);
 			path = mnmPlayer;
 			sourceTree = "<group>";
@@ -224,7 +269,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A6646291D374E3200E5E57A /* Assets.xcassets in Resources */,
-				7A66462C1D374E3300E5E57A /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +293,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A6646671D374F2000E5E57A /* PlayList.swift in Sources */,
+				7A6646631D374F2000E5E57A /* Utils.swift in Sources */,
+				7A6646691D374F2000E5E57A /* PLItem.swift in Sources */,
+				7A66466D1D374F2000E5E57A /* Utils.c in Sources */,
 				7A6646271D374E3200E5E57A /* AppDelegate.swift in Sources */,
+				7A66466A1D374F2000E5E57A /* ICCP.swift in Sources */,
+				7A6646651D374F2000E5E57A /* WindowedUI.swift in Sources */,
+				7A6646611D374F2000E5E57A /* PlayListUI.swift in Sources */,
+				7A6646661D374F2000E5E57A /* StreamReader.swift in Sources */,
+				7A6646681D374F2000E5E57A /* PlayList+DataSource.swift in Sources */,
+				7A6646601D374F2000E5E57A /* PlayList+IO.swift in Sources */,
+				7A66466E1D374F2000E5E57A /* main.swift in Sources */,
+				7A6646641D374F2000E5E57A /* PlayerUI.swift in Sources */,
+				7A66466B1D374F2000E5E57A /* AVFPlayer.swift in Sources */,
+				7A6646621D374F2000E5E57A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,17 +341,6 @@
 			targetProxy = 7A66463E1D374E3300E5E57A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		7A66462A1D374E3300E5E57A /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7A66462B1D374E3300E5E57A /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7A6646441D374E3300E5E57A /* Debug */ = {
@@ -382,11 +429,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = mnmPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nom.aob.mnmPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "mnmPlayer/mnmPlayer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -394,11 +444,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = mnmPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nom.aob.mnmPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "mnmPlayer/mnmPlayer-Bridging-Header.h";
 			};
 			name = Release;
 		};
