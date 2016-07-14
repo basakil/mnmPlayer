@@ -1,0 +1,37 @@
+
+
+uti's:
+UTI=Optional("com.apple.m4a-audio") for ext:m4a
+UTI=Optional("public.mp3") for ext:mp3
+UTI=Optional("public.aifc-audio") for ext:aiff
+UTI=Optional("dyn.age8u") for ext:
+UTI=Optional("com.microsoft.waveform-audio") for ext:wav
+
+#rd: cocoa bindings:
+- options:
+    - value transformers (fahrenheit to celcius)
+    - placeholders (when nil or invalid)
+- viewcontrollers: object,
+- override self send valueForUndefinedKey:/setValue:forUndefinedKey: messages not to get NSUndefinedKeyException
+    - setNilValueForKey: message not to get NSInvalidArgumentException
+- validation ->  validate<Key>:error:
+- NSNull, NSValue, NSInt ... are used for primittives...
+
+
+
+* Text vibrates while scrolling from vertical top or bottom. Not now..
+- tableView.makeViewWithIdentifier seems to work, but #of items increase mem usage subtantially...?
++ next-prev
+    + link with item ending
++ check deletion from list
+    - caret icon does not change to trash while deleting??
++ volume
+
+- shuffle & repeat btns and stuff
+    - better random for unplayed items (unplayed list?)
+* mark playing item by color
+    + by boldness
+- auto pl ending does not change play icon
+- ccp: ctrl+{a,c,v,x}
+
+- playlist mgmt (load/add/save)
