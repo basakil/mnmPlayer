@@ -15,7 +15,8 @@ enum PlayerError: ErrorType {
 
 //@TODO make a player proto & conform (factorisation?)
 class AVFPlayer : NSObject {
-    var player:AVAudioPlayer? = nil
+//    var player:AVAudioPlayer? = nil
+    var player:AVPlayer? = nil
     var item:PLItem? = nil
     
     override init() {
@@ -39,10 +40,23 @@ class AVFPlayer : NSObject {
 ////        player!.play()
         
         super.init()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(didFinishPlaying(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(didFinishPlaying(_:)), name: AVPlayerItemFailedToPlayToEndTimeNotification, object: nil)
+
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemFailedToPlayToEndTimeNotification, object: nil)
     }
     
     func play() -> Bool {
-        return player?.play() ?? false
+        guard let player = self.player else {
+            return false
+        }
+        player.play()
+        return player.error == nil
     }
     
     func pause() {
@@ -51,13 +65,18 @@ class AVFPlayer : NSObject {
     }
     
     func isPlaying() -> Bool {
-        return player?.playing ?? false
+        if (player?.rate != 0 && player?.error == nil) {
+            return true
+        }
+        return false
     }
     
-    private func newPlayer(url:NSURL) throws -> AVAudioPlayer {
-        let player = try AVAudioPlayer(contentsOfURL: url)
+    private func newPlayer(url:NSURL) throws -> AVPlayer {
+        let playerItem = AVPlayerItem(URL: url)
+        let player = AVPlayer(playerItem: playerItem)
         player.volume = Float(volume)
-        player.delegate = self
+        
+//        player.delegate = self
         
         return player
     }
@@ -65,7 +84,7 @@ class AVFPlayer : NSObject {
     func setItem(item:PLItem? = nil, isUpdateFields:Bool = false) -> PlayerError? {
         
         if player != nil {
-            player!.stop()
+            player!.pause()
             player = nil
         }
         
@@ -83,7 +102,7 @@ class AVFPlayer : NSObject {
                 return PlayerError.InitPlayer
             }
             if isUpdateFields {
-                item!.duration = player!.duration
+                item!.duration = player!.currentItem?.duration.seconds ?? item!.duration
                 //@TODO: read/update some more properties
             }
         }
@@ -93,17 +112,17 @@ class AVFPlayer : NSObject {
     
     var currentTime:Double {
         get {
-            return player?.currentTime ?? 0
+            return player?.currentItem?.currentTime().seconds ?? 0
         }
         
         set(val) {
-            player?.currentTime = val
+            player?.currentItem?.seekToTime(CMTime(seconds: val, preferredTimescale: 1000))
         }
     }
     
     var duration:Double {
         get {
-            return player?.duration ?? 0
+            return player?.currentItem?.duration.seconds ?? 0
         }
     }
     
@@ -120,6 +139,14 @@ class AVFPlayer : NSObject {
             _volume = val
             player?.volume = Float(_volume)
         }
+    }
+    
+    func didFinishPlaying(note: NSNotification) {
+        // Your code here
+        let center = NSNotificationCenter.defaultCenter()
+        center.postNotificationName(Notifications.itemStopped.rawValue,
+                                    object: self,
+                                    userInfo: [PLItem.keyType:self.item!])
     }
 } // class AVFPlayer
 

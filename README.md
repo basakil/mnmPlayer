@@ -1,6 +1,6 @@
 # mnmPlayer
-A simple native MacOS audio player aimed to have minimal resource consumption...
-* The product (application) works but the project is incomplete yet...
+A simple and native Mac (OS X) audio player aimed to have minimal resource usage...
+* There extists a working product (application) but the project is incomplete yet...
 
 ## Planned properties of the product:
 
@@ -13,4 +13,9 @@ A simple native MacOS audio player aimed to have minimal resource consumption...
 4. Minimal -distributed- application size
     * Less than 10MB for now, will be significantly less when Apple embeds Swift runtime into MacOS.
 
-## Swift developers and graphics designers are needed...
+## Help Wanted!:
+
+### Swift / Mac Developers are needed
+    * for -general- development process
+### Graphics Designers are needed
+    * for application / button icons (svg?) 

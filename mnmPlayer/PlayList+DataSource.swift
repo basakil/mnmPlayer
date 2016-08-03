@@ -96,6 +96,14 @@ extension PlayList: NSTableViewDataSource, NSDraggingSource {
             
         } else if pbtypes.contains(NSURLPboardType) {
             //@TODO? from another instance of the application...
+            guard let urls = pboard.readObjectsForClasses([NSURL.self], options: nil) as? [NSURL] else {
+                print("Error:DnD: No [NSURL] for url drops ??!")
+                return false
+            }
+            
+            let ret = insertURLs(urls, pos: dropRow)
+            isChanged = ret > 0
+            print("Info:Dnd: Inserted \(ret) items.")
         }
         
         return isChanged;

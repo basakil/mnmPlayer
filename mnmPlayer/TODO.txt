@@ -7,6 +7,16 @@ UTI=Optional("public.aifc-audio") for ext:aiff
 UTI=Optional("dyn.age8u") for ext:
 UTI=Optional("com.microsoft.waveform-audio") for ext:wav
 
+#get uti:
+mdls -name kMDItemContentType ~/temp/music1.mp3
+
+AVPlayer:
+- App Transport Security (ATS) configured? (for web url's)
+- AVURLAssetPreferPreciseDurationAndTimingKey
+- (id)addPeriodicTimeObserverForInterval:(CMTime)interval queue:(dispatch_queue_t)queue usingBlock:(void (^)(CMTime time))block;
+- CMTimeGetSeconds( self.player.currentItem.asset.duration )
+
+
 #rd: cocoa bindings:
 - options:
     - value transformers (fahrenheit to celcius)
@@ -34,4 +44,8 @@ UTI=Optional("com.microsoft.waveform-audio") for ext:wav
 - auto pl ending does not change play icon
 - ccp: ctrl+{a,c,v,x}
 
-- playlist mgmt (load/add/save)
++ playlist mgmt (load/add/save)
+    - warn on overwrite?
+
+- video?
+- embedded player?, switchable?

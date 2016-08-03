@@ -28,5 +28,10 @@
 	<string>Copyright © 2016 AoB. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string>main</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

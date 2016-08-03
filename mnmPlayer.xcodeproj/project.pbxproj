@@ -23,7 +23,6 @@
 		7A6646891D37520800E5E57A /* PLItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6646791D37520800E5E57A /* PLItem.swift */; };
 		7A66468A1D37520800E5E57A /* ICCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66467A1D37520800E5E57A /* ICCP.swift */; };
 		7A66468B1D37520800E5E57A /* AVFPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66467B1D37520800E5E57A /* AVFPlayer.swift */; };
-		7A66468C1D37520800E5E57A /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7A66467C1D37520800E5E57A /* TODO.txt */; };
 		7A66468D1D37520800E5E57A /* Utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 7A66467E1D37520800E5E57A /* Utils.c */; };
 		7A66468E1D37520800E5E57A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66467F1D37520800E5E57A /* main.swift */; };
 /* End PBXBuildFile section */
@@ -126,8 +125,14 @@
 		7A6646251D374E3200E5E57A /* mnmPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				7A66466F1D37520800E5E57A /* PlayList+DataSource.swift */,
+				7A6646281D374E3200E5E57A /* Assets.xcassets */,
+				7A66462D1D374E3300E5E57A /* Info.plist */,
 				7A6646701D37520800E5E57A /* mnmPlayer-Bridging-Header.h */,
+				7A66467D1D37520800E5E57A /* Utils.h */,
+				7A66467E1D37520800E5E57A /* Utils.c */,
+				7A66467F1D37520800E5E57A /* main.swift */,
+				7A6646261D374E3200E5E57A /* AppDelegate.swift */,
+				7A66466F1D37520800E5E57A /* PlayList+DataSource.swift */,
 				7A6646711D37520800E5E57A /* PlayList+IO.swift */,
 				7A6646721D37520800E5E57A /* PlayListUI.swift */,
 				7A6646731D37520800E5E57A /* Constants.swift */,
@@ -139,12 +144,6 @@
 				7A6646791D37520800E5E57A /* PLItem.swift */,
 				7A66467A1D37520800E5E57A /* ICCP.swift */,
 				7A66467B1D37520800E5E57A /* AVFPlayer.swift */,
-				7A66467D1D37520800E5E57A /* Utils.h */,
-				7A66467E1D37520800E5E57A /* Utils.c */,
-				7A66467F1D37520800E5E57A /* main.swift */,
-				7A6646261D374E3200E5E57A /* AppDelegate.swift */,
-				7A6646281D374E3200E5E57A /* Assets.xcassets */,
-				7A66462D1D374E3300E5E57A /* Info.plist */,
 			);
 			path = mnmPlayer;
 			sourceTree = "<group>";
@@ -271,7 +270,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A66468C1D37520800E5E57A /* TODO.txt in Resources */,
 				7A6646291D374E3200E5E57A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

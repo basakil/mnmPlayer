@@ -30,6 +30,9 @@ class PlayerUI:WindowedUI {
     static let txt_play = " > "
     static let txt_pause = " = "
     
+    static let DUR_MAX:Double = 362439 // 99*3600+99*60+99
+    var duration:Double  = 0
+    
     override init() {
         super.init()
     }
@@ -175,6 +178,8 @@ class PlayerUI:WindowedUI {
             _item = value
     //        let ret:PLItem?
             
+            play(isPlay: value != nil)
+            
             if value == nil {
     //            ret = nil
                 getViewWithTag(PlayerUI.tag_txttitle, type:NSTextField.self)!.stringValue = PlayerUI.txt_na
@@ -183,15 +188,15 @@ class PlayerUI:WindowedUI {
             } else {
     //            ret = item
                 getViewWithTag(PlayerUI.tag_txttitle, type:NSTextField.self)!.stringValue = (item?.title ?? "") as String
-                getViewWithTag(PlayerUI.tag_txttime, type:NSTextField.self)!.stringValue =
-                    Utils.getTimeString(0)
-                getViewWithTag(PlayerUI.tag_txtdur, type:NSTextField.self)!.stringValue =
-                    Utils.getTimeString(Int(player.duration))
-                value!.duration =  player.duration
+                getViewWithTag(PlayerUI.tag_txttime, type:NSTextField.self)!.stringValue = Utils.getTimeString(0)
+                if (player.duration >= 0.0 && player.duration <= PlayerUI.DUR_MAX) {
+                    duration = player.duration
+                    getViewWithTag(PlayerUI.tag_txtdur, type:NSTextField.self)!.stringValue = Utils.getTimeString(Int(player.duration))
+                }
             }
             getViewWithTag(PlayerUI.tag_sldtime, type:NSSlider.self)!.doubleValue = 0
             
-            play(isPlay: value != nil)
+            
             
     //        return ret
         }
@@ -218,6 +223,10 @@ class PlayerUI:WindowedUI {
             Utils.getTimeString(Int(player.currentTime))
         if player.duration > 0 {
             getViewWithTag(PlayerUI.tag_sldtime, type:NSSlider.self)?.doubleValue = player.currentTime/player.duration
+        }
+        //AVPlayer does not return a valid duration initially...
+        if (duration != player.duration && player.duration >= 0.0 && player.duration <= PlayerUI.DUR_MAX) {
+            getViewWithTag(PlayerUI.tag_txtdur, type:NSTextField.self)!.stringValue = Utils.getTimeString(Int(player.duration))
         }
     }
     
