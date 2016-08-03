@@ -16,8 +16,6 @@ AVPlayer:
 - (id)addPeriodicTimeObserverForInterval:(CMTime)interval queue:(dispatch_queue_t)queue usingBlock:(void (^)(CMTime time))block;
 - CMTimeGetSeconds( self.player.currentItem.asset.duration )
 
-test contributors..
-
 #rd: cocoa bindings:
 - options:
     - value transformers (fahrenheit to celcius)
