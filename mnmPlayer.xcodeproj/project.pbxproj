@@ -25,6 +25,7 @@
 		7A66468B1D37520800E5E57A /* AVFPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66467B1D37520800E5E57A /* AVFPlayer.swift */; };
 		7A66468D1D37520800E5E57A /* Utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 7A66467E1D37520800E5E57A /* Utils.c */; };
 		7A66468E1D37520800E5E57A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A66467F1D37520800E5E57A /* main.swift */; };
+		7ADACA3C1D529D6600BDD9CF /* PlayList+ICCP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADACA3B1D529D6600BDD9CF /* PlayList+ICCP.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		7A66467E1D37520800E5E57A /* Utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Utils.c; sourceTree = "<group>"; };
 		7A66467F1D37520800E5E57A /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		7A78C6A21D3756AF00DD8155 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7ADACA3B1D529D6600BDD9CF /* PlayList+ICCP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlayList+ICCP.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,15 +134,16 @@
 				7A66467E1D37520800E5E57A /* Utils.c */,
 				7A66467F1D37520800E5E57A /* main.swift */,
 				7A6646261D374E3200E5E57A /* AppDelegate.swift */,
+				7A6646781D37520800E5E57A /* PlayList.swift */,
 				7A66466F1D37520800E5E57A /* PlayList+DataSource.swift */,
 				7A6646711D37520800E5E57A /* PlayList+IO.swift */,
+				7ADACA3B1D529D6600BDD9CF /* PlayList+ICCP.swift */,
 				7A6646721D37520800E5E57A /* PlayListUI.swift */,
 				7A6646731D37520800E5E57A /* Constants.swift */,
 				7A6646741D37520800E5E57A /* Utils.swift */,
 				7A6646751D37520800E5E57A /* PlayerUI.swift */,
 				7A6646761D37520800E5E57A /* WindowedUI.swift */,
 				7A6646771D37520800E5E57A /* StreamReader.swift */,
-				7A6646781D37520800E5E57A /* PlayList.swift */,
 				7A6646791D37520800E5E57A /* PLItem.swift */,
 				7A66467A1D37520800E5E57A /* ICCP.swift */,
 				7A66467B1D37520800E5E57A /* AVFPlayer.swift */,
@@ -305,6 +308,7 @@
 				7A6646871D37520800E5E57A /* StreamReader.swift in Sources */,
 				7A6646851D37520800E5E57A /* PlayerUI.swift in Sources */,
 				7A6646801D37520800E5E57A /* PlayList+DataSource.swift in Sources */,
+				7ADACA3C1D529D6600BDD9CF /* PlayList+ICCP.swift in Sources */,
 				7A6646271D374E3200E5E57A /* AppDelegate.swift in Sources */,
 				7A66468E1D37520800E5E57A /* main.swift in Sources */,
 				7A6646821D37520800E5E57A /* PlayListUI.swift in Sources */,

@@ -38,6 +38,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                         action:#selector(self.actionSelectAll(_:)),
                                         keyEquivalent: "a")
         editMenu.addItem(selAllMenuItem)
+        let cutMenuItem = NSMenuItem(title: "Cut",
+                                      action:#selector(self.actionCut(_:)),
+                                      keyEquivalent: "x")
+        editMenu.addItem(cutMenuItem)
+        let copyMenuItem = NSMenuItem(title: "Copy",
+                                        action:#selector(self.actionCopy(_:)),
+                                        keyEquivalent: "c")
+        editMenu.addItem(copyMenuItem)
+        let pasteMenuItem = NSMenuItem(title: "Paste",
+                                      action:#selector(self.actionPaste(_:)),
+                                      keyEquivalent: "v")
+        editMenu.addItem(pasteMenuItem)
+
         
         let delSelMenuItem = NSMenuItem(title: "Delete Selected",
                                         action:#selector(self.actionDeleteSelected(_:)),
@@ -66,6 +79,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func actionSelectAll(sender:AnyObject) {
         //        playListUI.focus
         playList.ccp_selectAll()
+    }
+    
+    func actionCut(sender:AnyObject) {
+        let pboard = NSPasteboard.generalPasteboard()
+        playList.ccp_cut(pboard)
+    }
+    
+    func actionCopy(sender:AnyObject) {
+        let pboard = NSPasteboard.generalPasteboard()
+        playList.ccp_copy(pboard)
+    }
+    
+    func actionPaste(sender:AnyObject) {
+        let pboard = NSPasteboard.generalPasteboard()
+        playList.ccp_paste(pboard)
     }
     
     func actionDeleteSelected(sender:AnyObject) {

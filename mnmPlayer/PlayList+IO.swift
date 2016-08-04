@@ -30,33 +30,34 @@ extension PlayList {
     func read(url:NSURL, encoding : UInt = NSUTF8StringEncoding, handler: ([NSURL]? -> Void)?  = nil) -> [NSURL] {
         var ret = [NSURL]()
 //        var strStream:Any
-        if (url.fileURL) {
-            guard let stream = StreamReader(url: url, encoding:encoding) else {
-                print("Warning: insertAsURLs: Not StreamReader readable:\(url.absoluteString)");
-                return ret
-            }
-            stream.rewind()
-            
-            for line in stream {
-                let str = line.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                
-                //@TODO: handle attributes..
-                if str.hasPrefix("#EXT") {
-                    continue
-                }
-                
-                if str.characters.count < 1 {
-                    continue
-                }
-                
-                let item:NSURL? = parseUrlStr(str, relative: url)
-                if item != nil {
-                    ret.append(item!)
-                }
-            }
-        } else {
+        
+        guard url.fileURL else {
             print("Warning: insertAsURLs: Non-file url:\(url.absoluteString)");
             return ret
+        }
+        
+        guard let stream = StreamReader(url: url, encoding:encoding) else {
+            print("Warning: insertAsURLs: Not StreamReader readable:\(url.absoluteString)");
+            return ret
+        }
+        stream.rewind()
+        
+        for line in stream {
+            let str = line.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            
+            //@TODO: handle attributes..
+            if str.hasPrefix("#EXT") {
+                continue
+            }
+            
+            if str.characters.count < 1 {
+                continue
+            }
+            
+            let item:NSURL? = parseUrlStr(str, relative: url)
+            if item != nil {
+                ret.append(item!)
+            }
         }
         
         return ret

@@ -18,4 +18,4 @@ A simple and native Mac (OS X) audio player aimed to have minimal resource usage
 ### Swift / Mac Developers are needed
     * for -general- development process
 ### Graphics Designers are needed
-    * for application / button icons (svg?) 
+    * for application / button icons (svg,png) 

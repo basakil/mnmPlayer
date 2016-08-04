@@ -18,6 +18,9 @@ final class PlayList : NSArrayController, MutableCollectionType, SequenceType {
     
     static let idxNil:Int = -1
     
+    //@NOTICE: final class should have all vars here..
+    static let kSelectionIndexes:String = String(PlayList.self)+".keySelectionIndexes"
+    
     dynamic
     var isRepeat:Bool = false
     
@@ -223,38 +226,6 @@ final class PlayList : NSArrayController, MutableCollectionType, SequenceType {
         }
 
         return nil
-    }
-    
-}
-
-/////////////////////////////////////////////////////////////////////////
-
-extension PlayList : ICCP {
-    
-    func ccp_cut() -> Bool {
-        return false
-    }
-    
-    func ccp_copy() -> Bool {
-        return false
-    }
-    
-    func ccp_paste() -> Bool {
-        return false
-    }
-    
-    func ccp_delete() -> Bool {
-        let selected = selectionIndexes
-        removeObjectsAtArrangedObjectIndexes(selected)
-        return selected.count > 0
-    }
-    
-    func ccp_selectAll() -> Bool {
-        if (count > 0) {
-            let idxSet = NSIndexSet(indexesInRange: NSRange(location:startIndex, length: count))
-            return setSelectionIndexes(idxSet)
-        }
-        return false
     }
     
 }

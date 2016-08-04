@@ -12,8 +12,8 @@ extension PlayList: NSTableViewDataSource, NSDraggingSource {
     
     func tableView(tableView: NSTableView, writeRowsWithIndexes rowIndexes: NSIndexSet, toPasteboard pboard: NSPasteboard) -> Bool {
         let zNSIndexSetData = NSKeyedArchiver.archivedDataWithRootObject(rowIndexes)
-        pboard.declareTypes([PLItem.keyType], owner: self)
-        pboard.setData(zNSIndexSetData, forType: PLItem.keyType)
+        pboard.declareTypes([PlayList.kSelectionIndexes], owner: self)
+        pboard.setData(zNSIndexSetData, forType: PlayList.kSelectionIndexes)
         return true
     }
     
@@ -44,13 +44,13 @@ extension PlayList: NSTableViewDataSource, NSDraggingSource {
         var isChanged:Bool = false
         
         guard let pbtypes = pboard.types else {
-            print("Error:DnD: No pboard type for drop ??!")
+            Utils.warn("DnD: No pboard type for drop ??!")
             return false
         }
         
         if info.draggingSource() as? NSTableView === tableView {
-            guard let rowData = pboard.dataForType(PLItem.keyType) else {
-                print("Error:DnD: No data for self drop ??!")
+            guard let rowData = pboard.dataForType(PlayList.kSelectionIndexes) else {
+                Utils.warn("DnD: No data for self drop ??!")
                 return false
             }
             
@@ -74,36 +74,10 @@ extension PlayList: NSTableViewDataSource, NSDraggingSource {
             
             isChanged = true;
             
-        } else if pbtypes.contains(PLItem.keyType) {
-            print("Error:DnD: PLItem should DnD should be carried in the same table!..")
-        } else if pbtypes.contains(NSFilenamesPboardType) {
-            
-            guard let files = pboard.propertyListForType(NSFilenamesPboardType) as? [String] else {
-                print("Error:DnD: No [String] for file drops ??!")
-                return false
-            }
-            
-            var urls = [NSURL]()
-            urls.reserveCapacity(Int(Double(files.count)*1.2) + 2)
-            
-            for str in files {
-                urls.append(NSURL.fileURLWithPath(str))
-            }
-            
-            let ret = insertURLs(urls, pos: dropRow)
-            isChanged = ret > 0
-            print("Info:Dnd: Inserted \(ret) items.")
-            
-        } else if pbtypes.contains(NSURLPboardType) {
-            //@TODO? from another instance of the application...
-            guard let urls = pboard.readObjectsForClasses([NSURL.self], options: nil) as? [NSURL] else {
-                print("Error:DnD: No [NSURL] for url drops ??!")
-                return false
-            }
-            
-            let ret = insertURLs(urls, pos: dropRow)
-            isChanged = ret > 0
-            print("Info:Dnd: Inserted \(ret) items.")
+        } else if pbtypes.contains(PlayList.kSelectionIndexes) {
+            Utils.warn("DnD: PLItem should DnD should be carried in the same table!..")
+        } else {
+            isChanged = ccp_paste(pboard, toPos: dropRow)
         }
         
         return isChanged;

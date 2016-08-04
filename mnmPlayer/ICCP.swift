@@ -6,12 +6,12 @@
 //  Copyright © 2016 AoB. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 protocol ICCP {
-    func ccp_cut() -> Bool
-    func ccp_copy() -> Bool
-    func ccp_paste() -> Bool
+    func ccp_cut(pboard:NSPasteboard) -> Bool
+    func ccp_copy(pboard:NSPasteboard) -> Bool
+    func ccp_paste(pboard:NSPasteboard, toPos:Int?) -> Bool
     func ccp_delete() -> Bool
     func ccp_selectAll() -> Bool
 }

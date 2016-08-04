@@ -221,6 +221,11 @@ class Utils {
         })
     }
     
+    static func info(text:String) {
+        print("Info:\(text)")
+//        exit(-1)
+    }
+    
     static func error(text:String) {
         print("Quitting for error:\(text)")
         exit(-1)
