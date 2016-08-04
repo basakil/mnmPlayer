@@ -2,7 +2,7 @@
 //  Utils.swift
 //  slsPlayer
 //
-//  Created by aobskl on 6/2/16.
+//  Created by basakil on 6/2/16.
 //  Copyright © 2016 AoB. All rights reserved.
 //
 

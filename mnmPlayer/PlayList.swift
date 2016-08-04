@@ -2,7 +2,7 @@
 //  PLItem.swift
 //  slsPlayer
 //
-//  Created by aobskl on 5/30/16.
+//  Created by basakil on 5/30/16.
 //  Copyright © 2016 AoB. All rights reserved.
 //
 

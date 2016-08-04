@@ -2,7 +2,7 @@
 //  ICCP.swift
 //  slsPlayer
 //
-//  Created by aobskl on 7/4/16.
+//  Created by basakil on 7/4/16.
 //  Copyright © 2016 AoB. All rights reserved.
 //
 
