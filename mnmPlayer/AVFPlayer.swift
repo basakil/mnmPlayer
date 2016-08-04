@@ -18,6 +18,7 @@ class AVFPlayer : NSObject {
 //    var player:AVAudioPlayer? = nil
     var player:AVPlayer? = nil
     var item:PLItem? = nil
+    var vpui:VideoPlayerUI? = nil
     
     override init() {
 //        do {
@@ -49,6 +50,11 @@ class AVFPlayer : NSObject {
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemFailedToPlayToEndTimeNotification, object: nil)
+        
+        if vpui != nil {
+            vpui!.player = nil
+            vpui = nil
+        }
     }
     
     func play() -> Bool {
@@ -56,6 +62,18 @@ class AVFPlayer : NSObject {
             return false
         }
         player.play()
+        if player.currentItem!.asset.tracksWithMediaType(AVMediaTypeVideo).count > 0 {
+            if vpui == nil {
+                vpui = VideoPlayerUI()
+            }
+            vpui?.player = player
+            vpui?.setVisible(true)
+        } else {
+            if vpui != nil {
+                vpui!.player = nil
+                vpui = nil
+            }
+        }
         return player.error == nil
     }
     
