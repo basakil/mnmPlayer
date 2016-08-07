@@ -15,7 +15,7 @@ enum Notifications:String {
     case itemSelect = "itemSelect"
         case itemSelectNext = "itemSelectNext"
         case itemSelectPrev = "itemSelectPrev"
-    
+    case playerPeriodicEvent = "playerPeriodicEvent"    
 }
 
 class Const {

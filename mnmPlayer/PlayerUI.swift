@@ -35,6 +35,8 @@ class PlayerUI:WindowedUI {
     
     override init() {
         super.init()
+        // initial emtpy set:
+        player._isPeriodicTimerRunning = true
     }
     
     func newReadOnlyTextField() -> NSTextField {
@@ -158,6 +160,28 @@ class PlayerUI:WindowedUI {
         window.setContentSize(csize)
     }
     
+    override func initEvents() {
+        observe(Notifications.itemSelected.rawValue) { [weak self] notif in
+            guard let item = notif.userInfo?[PLItem.keyType] as? PLItem else {
+                return
+            }
+            self?.item = item
+        }
+        
+        observe(Notifications.playerPeriodicEvent.rawValue) { [weak self] notif in
+            guard self != nil else {
+                return
+            }
+            self!.action_stepTimer(self!.player)
+        }
+        super.initEvents()
+    }
+    
+    override func uninitEvents() {
+        
+        super.uninitEvents()
+    }
+    
     func getViewWithTag<T>(tag:Int, type:T.Type) -> T? {
         return self.window.contentView!.viewWithTag(tag) as? T ;
     }
@@ -209,34 +233,43 @@ class PlayerUI:WindowedUI {
             player.pause()
         }
         //@TODO: pause resume stepper
-        if isPause {
-            getViewWithTag(PlayerUI.tag_btnplay, type:NSButton.self)?.title = PlayerUI.txt_play
-            stepTimerSS(isStop: true)
-        } else {
-            getViewWithTag(PlayerUI.tag_btnplay, type:NSButton.self)?.title = PlayerUI.txt_pause
-            stepTimerSS()
-        }
+//        if isPause {
+//            getViewWithTag(PlayerUI.tag_btnplay, type:NSButton.self)?.title = PlayerUI.txt_play
+//            stepTimerSS(isStop: true)
+//        } else {
+//            getViewWithTag(PlayerUI.tag_btnplay, type:NSButton.self)?.title = PlayerUI.txt_pause
+//            stepTimerSS()
+//        }
     }
     
+    var _wasPlaying = false
     func action_stepTimer(sender:AnyObject) {
         getViewWithTag(PlayerUI.tag_txttime, type:NSTextField.self)?.stringValue =
             Utils.getTimeString(Int(player.currentTime))
         if player.duration > 0 {
             getViewWithTag(PlayerUI.tag_sldtime, type:NSSlider.self)?.doubleValue = player.currentTime/player.duration
         }
-        //AVPlayer does not return a valid duration initially...
+        
+        //@TODO: PERF: AVPlayer does not return a valid duration initially...
         if (duration != player.duration && player.duration >= 0.0 && player.duration <= PlayerUI.DUR_MAX) {
             getViewWithTag(PlayerUI.tag_txtdur, type:NSTextField.self)!.stringValue = Utils.getTimeString(Int(player.duration))
         }
+        
+        let isPlaying = player.isPlaying()
+        if (isPlaying != _wasPlaying) {
+            getViewWithTag(PlayerUI.tag_btnplay, type:NSButton.self)?.title = (isPlaying ? PlayerUI.txt_pause : PlayerUI.txt_play)
+            _wasPlaying = isPlaying
+        }
+        
     }
     
-    func stepTimerSS(isStop isStop:Bool = false) {
-        stepTimer?.invalidate()
-        stepTimer = nil
-        if !isStop {
-            stepTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(action_stepTimer), userInfo: nil, repeats: true)
-        }
-    }
+//    func stepTimerSS(isStop isStop:Bool = false) {
+//        stepTimer?.invalidate()
+//        stepTimer = nil
+//        if !isStop {
+//            stepTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(action_stepTimer), userInfo: nil, repeats: true)
+//        }
+//    }
     
     func action_sld(sender:AnyObject) {
         let slider = sender as! NSSlider
@@ -285,20 +318,5 @@ class PlayerUI:WindowedUI {
         super.action_btn(sender)
     }
     
-    override func initEvents() {
-        observe(Notifications.itemSelected.rawValue) { [weak self] notif in
-            guard let item = notif.userInfo?[PLItem.keyType] as? PLItem else {
-                return
-            }
-            self?.item = item
-        }
-        
-        super.initEvents()
-    }
-    
-    override func uninitEvents() {
-        
-        super.uninitEvents()
-    }
 }
 

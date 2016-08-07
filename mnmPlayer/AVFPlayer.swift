@@ -42,8 +42,8 @@ class AVFPlayer : NSObject {
         
         super.init()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(didFinishPlaying(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(didFinishPlaying(_:)), name: AVPlayerItemFailedToPlayToEndTimeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(actDidFinishPlaying(_:)), name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(actDidFinishPlaying(_:)), name: AVPlayerItemFailedToPlayToEndTimeNotification, object: nil)
 
     }
     
@@ -51,10 +51,7 @@ class AVFPlayer : NSObject {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AVPlayerItemFailedToPlayToEndTimeNotification, object: nil)
         
-        if vpui != nil {
-            vpui!.player = nil
-            vpui = nil
-        }
+        deletePlayer()
     }
     
     func play() -> Bool {
@@ -91,20 +88,30 @@ class AVFPlayer : NSObject {
     
     private func newPlayer(url:NSURL) throws -> AVPlayer {
         let playerItem = AVPlayerItem(URL: url)
-        let player = AVPlayer(playerItem: playerItem)
-        player.volume = Float(volume)
+        player = AVPlayer(playerItem: playerItem)
+        player!.volume = Float(volume)
         
-//        player.delegate = self
+        // refresh the new players listeners with the old one...
+        isPeriodicTimerRunning = _isPeriodicTimerRunning
         
-        return player
+        return player!
+    }
+    
+    private func deletePlayer() {
+        if vpui != nil {
+            vpui!.player = nil
+            vpui = nil
+        }
+        if player != nil {
+            isPeriodicTimerRunning = false
+            player!.pause()
+            player!.replaceCurrentItemWithPlayerItem(nil)
+            player = nil
+        }
     }
     
     func setItem(item:PLItem? = nil, isUpdateFields:Bool = false) -> PlayerError? {
-        
-        if player != nil {
-            player!.pause()
-            player = nil
-        }
+        deletePlayer()
         
         self.item = item
         
@@ -113,7 +120,7 @@ class AVFPlayer : NSObject {
                 return PlayerError.InitURL
             }
             do {
-                try player = newPlayer(url)
+                try newPlayer(url)
             } catch (let exc){
                 print("Error: could not initialize player: \(exc)")
                 player = nil
@@ -159,13 +166,48 @@ class AVFPlayer : NSObject {
         }
     }
     
-    func didFinishPlaying(note: NSNotification) {
-        // Your code here
+    func actDidFinishPlaying(note: NSNotification) {
         let center = NSNotificationCenter.defaultCenter()
         center.postNotificationName(Notifications.itemStopped.rawValue,
                                     object: self,
                                     userInfo: [PLItem.keyType:self.item!])
     }
+    
+    func actPeriodicTimer(time: CMTime) {
+//        Swift.print("periodic: \(time.value)")
+        let center = NSNotificationCenter.defaultCenter()
+        center.postNotificationName(Notifications.playerPeriodicEvent.rawValue,
+                                    object: self,
+                                    userInfo: [PLItem.keyType:self.item!])
+        
+    }
+    
+    var _periodicTimer:AnyObject? = nil
+    var _isPeriodicTimerRunning:Bool = false
+    var isPeriodicTimerRunning:Bool { //maybe called without a player object...
+        get {
+            return _periodicTimer != nil
+        }
+        set (value) {
+            if !value {
+//                _isPeriodicTimerRunning = false
+                guard _periodicTimer != nil else {
+                    return
+                }
+//                assert(player != nil, "cannot stop timer event for a nil player!!")
+                player?.removeTimeObserver(_periodicTimer!)
+                _periodicTimer = nil
+            } else {
+//                _isPeriodicTimerRunning = true
+                guard _periodicTimer == nil else {
+                    return
+                }
+//                assert(player != nil, "cannot start timer event for a nil player!!")
+                _periodicTimer = player?.addPeriodicTimeObserverForInterval(CMTime(value: 500, timescale: 1000), queue: nil, usingBlock: actPeriodicTimer(_:))
+            }
+        }
+    }
+    
 } // class AVFPlayer
 
 ///////////////////////////////////////////
