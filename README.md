@@ -17,11 +17,11 @@ A simple and native Mac (OS X) media player, with a playlist window/table, aimed
     * Less than 2% when playing audio @ a mid-2009 macbook pro, -almost- none when idle.
 4. Minimal memory usage.
     * Less than 20MB real memory usage when playing audio, for now...
-5. Minimal -distributed- application size
-    * Less than 10MB for now, will be significantly less when Apple embeds Swift runtime into MacOS.
+5. Minimal application -package- size
+    * Less than 10MB for now, expected to be significantly less when Apple embeds Swift runtime into MacOS.
 
 ## License
-Is not decided yet, please ignore any copyright statements for now. 
+Is not decided yet, please ignore any copyright statements -in any file- for now. 
 
 ## Help Wanted!:
 
